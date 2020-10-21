@@ -145,7 +145,7 @@ def padeDiretoPrecisaoFinita(objeto, grauDoNumerador, grauDoDenominador, prec):
         # Cálculo dos coeficientes do denominador do aproximante de Padé
         Bn = matrizDosTermosIndependentes( objeto, grauDoNumerador, grauDoDenominador, prec ) * A.inv( "LU" )        
         # Potências de x do denominador
-        Dx = sp.Matrix( np.zeros(( grauDoDenominador + 1, 1 )) )
+        Dx = sp.Matrix( np.zeros(( grauDoDenominador + 1, 1 )) ) 
         for linha in range( 0, grauDoDenominador + 1 ): Dx[linha] = x**(linha)                
         # Vetor para os coeficientes do denominador
         bn = sp.Matrix( np.zeros(( 1, grauDoDenominador + 1 )) )        
