@@ -4,7 +4,7 @@
 # In[3]:
 
 
-# Importar as seguintes librarias
+# Importar as seguintes bibliotecas
 import sympy as sp
 import numpy as np
 # Definir a letra x como parametro
