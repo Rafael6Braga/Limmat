@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[3]:
-
-
 # Importar as seguintes bibliotecas
 import sympy as sp
 import numpy as np
