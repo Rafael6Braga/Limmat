@@ -27,6 +27,7 @@
                                       
 ##### garantido a precisão infinita dos coeficientes.
 
+
 #### A2. MDPIE - Método Direto Precisão Infinita Exponencial
 ##### Para a construção de um aproximante de Padé, usando o método direto com precisão aritmética finita, basta executar todos os métodos definidos em MDPIE.py, e por último executar o comando:
 
@@ -38,6 +39,7 @@
     grauDoNumerador = grau do numerador do aproximante de Padé [p/q](x),
     grauDoDenominador = grau do denominador do aproximante de Padé [p/q](x),
     prec = número de algarismos significativos.
+    
 
 #### A3. MDPI - Método Recursivo Precisão Infinita
 
@@ -46,12 +48,13 @@
                        padeRecursivoPrecisaoInfinita(objeto, n, iterações, percurso)
 		       
 ##### onde: 
-     objeto - uma função ou uma lista de coeficientes (ver comentários em A.1),
-     n - série formal de potências f(x) truncada em x^n, 
-     iterações - no máximo 2n-1, ou seja, se por exemplo n=3, então o algoritmo começa em [3/0] e [2/0], ao fim de 
+     objeto = uma função ou uma lista de coeficientes (ver comentários em A.1),
+     n = série formal de potências f(x) truncada em x^n, 
+     iterações = no máximo 2*n-1, ou seja, se por exemplo n=3, então o algoritmo começa em [3/0] e [2/0], ao fim de 
     2*-1 iterações o último aproximante de Padé construído será o [0/3],
-     percurso - 1 para visualizar todos os aproximante de Padé construídos até à iteração k; 0 para visualizar o aproximante de 
+     percurso = 1 para visualizar todos os aproximante de Padé construídos até à iteração k; 0 para visualizar o aproximante de 
      Padé construído na iteração k.
+     
 
 #### A4. MDPI - Método Direto Precisão Finita
 
@@ -63,6 +66,7 @@
       grauDoNumerador = grau do numerador do aproximante de Padé [p/q](x),
       grauDoDenominador = grau do denominador do aproximante de Padé [p/q](x),
       prec = número de algarismos significativos.
+      
 
 #### A5. MDPI - Método Recursivo Precisão Finita
 
