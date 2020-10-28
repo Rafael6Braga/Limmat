@@ -181,7 +181,6 @@ def padeDiretoPrecisaoInfinita( objeto, grauDoNumerador, grauDoDenominador ):
                     An = sp.Matrix( coeficientesDaFuncao( objeto, grauDoNumerador, grauDoDenominador )[ -coluna:j ] )
                     Bn = sp.Matrix( bn[ 0: ] )
                     cn[ coluna - 1 ] = sp.Transpose( An ) * Bn
-                    
                     coluna += 1
                     j -= 1          
             # Numerador do aproximante de Padé         
@@ -197,4 +196,3 @@ def padeDiretoPrecisaoInfinita( objeto, grauDoNumerador, grauDoDenominador ):
     # Se a matriz não é invertível
     else: return( 'A matrix não é invertível.' )   
     return
-
