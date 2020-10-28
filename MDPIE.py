@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 # Importar as seguintes bibliotecas
 import sympy as sp
 import numpy as np
@@ -46,4 +40,3 @@ def padeExponencial( grauDoNumerador, grauDoDenominador):
     Denominador = padeExponencialDenominador( grauDoNumerador, grauDoDenominador)
     Pade = Numerador / Denominador
     return( Pade )
-
