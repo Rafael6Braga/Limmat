@@ -50,7 +50,7 @@
 ##### onde: 
      objeto = uma função ou uma lista de coeficientes (ver comentários em A.1),
      n = série formal de potências f(x) truncada em x^n, 
-     iterações = no máximo 2*n-1, ou seja, se por exemplo n=3, então o algoritmo começa em [3/0] e [2/0], 
+     iterações = no máximo 2*n-1, ou seja, se por exemplo n = 3, então o algoritmo começa em [3/0] e [2/0], 
      ao fim de 2*-1 iterações o último aproximante de Padé construído será o [0/3],
      percurso = 1 para visualizar todos os aproximante de Padé construídos até à iteração k; 0 para 
      visualizar o aproximante de Padé construído na iteração k.
@@ -75,7 +75,7 @@
 ##### onde:
      objeto = uma função ou uma lista de coeficientes (ver comentários em A.1),
      n = série formal de potências f(x) truncada em x^n,
-     iterações = no máximo 2n-1, ou seja, se por exemplo n=3, então o algoritmo começa em [3/0] e [2/0], 
+     iterações = no máximo 2*n-1, ou seja, se por exemplo n = 3, então o algoritmo começa em [3/0] e [2/0], 
      ao fim de 2*3-1 iterações o último aproximante de Padé construído será o [0/3],
      percurso = 1 para visualizar todos os aproximante de Padé construídos até à iteração k; 0 para 
      visualizar o aproximante de Padé construído na iteração k,
