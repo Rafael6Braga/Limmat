@@ -21,7 +21,7 @@
 
                                       objeto = (x+1)/sp.sqrt(x**2+4). 
                                                        
-##### O parâmetro por defeito é a letra x, se pretender mudar deve alterar todas as ocorrências da variável x em todos os métodos. A rotina irá construir a série de Taylor centrada em 0 dessa função e utilizar os primeiros p+q+1 coeficientes para a construção do aproximante de Padé \[p/q\](x). Alternativamente, pode definir uma lista com os primeiros p+q+1 coeficientes da série formal de potências, para a construção do aproximante de Padé \[p/q\]f(x). Nessa lista deverá colocar os valores, por exemplo, da seguinte forma:
+##### O parâmetro por defeito é a letra x. Se pretender mudar para outra letra deve alterar todas as ocorrências da variável x em todos os métodos. A rotina irá construir a série de Taylor centrada em 0 dessa função e utilizar os primeiros p+q+1 coeficientes para a construção do aproximante de Padé \[p/q\](x). Alternativamente, pode definir uma lista com os primeiros p+q+1 coeficientes da série formal de potências, para a construção do aproximante de Padé \[p/q\]f(x). Nessa lista deverá colocar os valores, por exemplo, da seguinte forma:
 
                     objeto = [sp.Rational(1)/sp.Rational(234), sp.Rational(8)/sp.Rational(3), ... ]
                                       
