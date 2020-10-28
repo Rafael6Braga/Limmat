@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[5]:
-
-
 # Importar as seguintes bibliotecas
 import sympy as sp
 import numpy as np
@@ -210,4 +204,3 @@ def padeDiretoPrecisaoFinita(objeto, grauDoNumerador, grauDoDenominador, prec):
     # Se a matriz não é invertível
     else: return("A matriz dos coeficientes não é invertível. ")     
     return
-
