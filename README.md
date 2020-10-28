@@ -41,7 +41,7 @@
     prec = número de algarismos significativos.
     
 
-#### A3. MDPI - Método Recursivo Precisão Infinita
+#### A3. MRPI - Método Recursivo Precisão Infinita
 
 ##### Para a construção de um ou vários aproximante de Padé usando o algoritmo de Baker com precisão aritmética infinita, basta executar todos o métodos definidos em MDPI.py, e por último executar o comando:
 
@@ -56,7 +56,7 @@
      visualizar o aproximante de Padé construído na iteração k.
      
 
-#### A4. MDPI - Método Direto Precisão Finita
+#### A4. MDPF - Método Direto Precisão Finita
 
 ##### Para a construção de um aproximante de Padé, usando o método direto com precisão aritmética finita, basta executar todos os métodos definidos em MDPI.py, e por último executar o comando:
                         padeDiretoPrecisaoFinita(objeto, grauDoNumerador, grauDoDenominador, prec) 
@@ -68,7 +68,7 @@
       prec = número de algarismos significativos.
       
 
-#### A5. MDPI - Método Recursivo Precisão Finita
+#### A5. MRPF - Método Recursivo Precisão Finita
 
 ##### Para a construção de um ou vários aproximante de Padé usando o algoritmo de Baker com precisão aritmética finita, basta executar todos os métodos definidos em MDPI.py, e por último executar o comando:
                          padeRecursivoPrecisaoInfinita(objeto, n, iterações, percurso) 
