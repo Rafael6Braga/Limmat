@@ -22,13 +22,29 @@ def matrizDosCoeficientes( objeto, grauDoNumerador, grauDoDenominador, prec ):
                     if ( grauDoDenominador - grauDoDenominador + coluna + 1 + linha < 0 ):
                         A[ linha, coluna ] = 0                        
                     # Coeficiente a_0
-                    elif ( grauDoDenominador - grauDoDenominador + coluna + 1 + linha == 0 ):
-                        an = mpf(objeto[0]) 
-                        A[ linha, coluna ] = sp.Float( an, prec )                    
+                   elif ( grauDoDenominador - grauDoDenominador + coluna + 1 + linha == 0 ):
+                        an = objeto[0] 
+                        if(an.is_integer == False):
+                            st_an = str(an)
+                            fraq = 0
+                            while( st_an[fraq] != '/'):
+                                    fraq += 1
+                            an_float = mpf(st_an[0:fraq])/ mpf(st_an[fraq+1:])
+                            A[ linha, coluna ] = an_float
+                        else:
+                            A[ linha, coluna ] = mpf(an)             
                     # Coeficientes a_n para n maior ou igual a 1
                     else:
                         an = objeto[ grauDoDenominador - grauDoDenominador + coluna + 1 + linha ]
-                        A[ linha, coluna] = sp.Float( an, prec )                        
+                        if(an.is_integer == False):
+                            st_an = str(an)
+                            fraq = 0
+                            while( st_an[fraq] != '/'):
+                                    fraq += 1
+                            an_float = mpf(st_an[0:fraq])/ mpf(st_an[fraq+1:])
+                            A[ linha, coluna ] = an_float
+                        else:
+                            A[ linha, coluna ] = mpf(an)                       
             return(A)       
         # erro
         else: return ('O número de coeficientes não é suficiente.')            
@@ -66,9 +82,17 @@ def matrizDosTermosIndependentes( objeto, grauDoNumerador, grauDoDenominador, pr
         # Se a lista contém os primeiros n + 1 coeficientes da série
         if ( grauDoNumerador + grauDoDenominador + 1 <= len( objeto ) ):
             for j in range( 0, grauDoDenominador ):
-                an = objeto[ grauDoNumerador + j +1 ]                   
-                # Coeficientes da matriz dos termos independentes
-                a[ 0, j ] = ( -1 ) * sp.Float( an, prec )                
+                an = objeto[ grauDoNumerador + j +1 ]                 
+                if(an.is_integer == False):
+                        st_an = str(an)
+                        fraq = 0
+                        while( st_an[fraq] != '/'):
+                                fraq += 1
+                        an_float = mpf(st_an[0:fraq])/ mpf(st_an[fraq+1:])                        
+                        # Coeficientes da matriz dos termos independentes
+                        a[ 0, j ] = ( -1 ) * an_float
+                else:
+                    a[ 0, j ] = ( -1 ) * mpf(an)                 
             return (a)        
         # erro
         else: return('O número de coeficientes não é suficiente.')        
@@ -101,7 +125,16 @@ def coeficientesParaCalcularCoeficentesDoNumerador(objeto, grauDoNumerador, grau
                 # Coeficientes da matriz dos termos independentes     
                 else:
                     an = objeto[ grauDoNumerador - coluna] 
-                    cA[ coluna ] = sp.Float( an, prec )                   
+                    if(an.is_integer == False):
+                        st_an = str(an)
+                        fraq = 0
+                        while( st_an[fraq] != '/'):
+                                fraq += 1
+                        an_float = mpf(st_an[0:fraq])/ mpf(st_an[fraq+1:])                        
+                        # Coeficientes da matriz dos termos independentes
+                        cA[ coluna ] =  an_float
+                    else:                   
+                        cA[ coluna ] = mpf(an)                    
             return( cA )          
         # erro
         else: return('O número de coeficientes não é suficiente.')        
