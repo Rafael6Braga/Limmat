@@ -21,12 +21,20 @@ def serieTruncada( objeto, n, prec ):
             coluna = 0
             iteracoes = 0
             while ( coluna <= n ):                   
-                # valor o coeficiente com 'prec' algarismos significativos
-                an[coluna] = mpf( objeto[ coluna] ) 
+            # valor o coeficiente com 'prec' algarismos significativos
+                aN =  objeto[ coluna] 
+                if(aN.is_integer == False):
+                        st_aN = str(aN)
+                        fraq = 0
+                        while( st_aN[fraq] != '/'):
+                                fraq += 1
+                        an[coluna] = an_float = mpf(st_aN[0:fraq])/ mpf(st_aN[fraq+1:])
+                else: 
+                    an[coluna] = mpf(aN)                    
                 fx[coluna] = x**coluna
                 coluna += 1                
-            Sn = fx * an            
-            return( Sn )        
+            Sn = fx * an           
+            return( Sn )      
         # erro
         else: return('Número de coeficientes insuficiente.')        
     # Se o objeto é uma função         
