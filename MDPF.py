@@ -22,7 +22,7 @@ def matrizDosCoeficientes( objeto, grauDoNumerador, grauDoDenominador, prec ):
                     if ( grauDoDenominador - grauDoDenominador + coluna + 1 + linha < 0 ):
                         A[ linha, coluna ] = 0                        
                     # Coeficiente a_0
-                   elif ( grauDoDenominador - grauDoDenominador + coluna + 1 + linha == 0 ):
+                    elif ( grauDoDenominador - grauDoDenominador + coluna + 1 + linha == 0 ):
                         an = objeto[0] 
                         if(an.is_integer == False):
                             st_an = str(an)
