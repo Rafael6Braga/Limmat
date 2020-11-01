@@ -100,7 +100,7 @@ def coeficientesParaCalcularCoeficentesDoNumerador(objeto, grauDoNumerador, grau
                     cA[ coluna ] = 0                    
                 # Coeficientes da matriz dos termos independentes     
                 else:
-                    an = objeto[ grauDoNumerador - i] 
+                    an = objeto[ grauDoNumerador - coluna] 
                     cA[ coluna ] = sp.Float( an, prec )                   
             return( cA )          
         # erro
