@@ -111,7 +111,7 @@ def padeDiretoPrecisaoInfinita( objeto, grauDoNumerador, grauDoDenominador ):
     # Matriz dos coeficientes do sistema Ab = a
     A = matrizdosCoeficientes( objeto, grauDoNumerador, grauDoDenominador )
     # erro
-    if(A is None): return
+    if(A is None): return( "A = None" )
     if (type(A) is str) : return(A)    
     # Se a matriz é nula
     if(A == 0): return("A matriz dos coeficientes não é invertível. ")        
