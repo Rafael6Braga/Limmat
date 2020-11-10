@@ -2,8 +2,6 @@
 import sympy as sp
 import numpy as np
 from mpmath import *
-# Importar o método 'inv'
-from numpy.linalg import inv
 # Definir a letra x como parametro
 x = sp.Symbol('x')
 ##-------- Início dos métodos auxiliares --------##
@@ -19,10 +17,10 @@ def matrizDosCoeficientes( objeto, grauDoNumerador, grauDoDenominador, prec ):
             for linha in range( 0, grauDoDenominador ):  
                 for coluna in range( 0, grauDoDenominador ):                    
                     # Para todo o n menor que zero n = 0
-                    if ( grauDoDenominador - grauDoDenominador + coluna + 1 + linha < 0 ):
+                    if ( grauDoNumerador - grauDoDenominador + coluna + 1 + linha < 0 ):
                         A[ linha, coluna ] = 0                        
                     # Coeficiente a_0
-                    elif ( grauDoDenominador - grauDoDenominador + coluna + 1 + linha == 0 ):
+                    elif ( grauDoNumerador - grauDoDenominador + coluna + 1 + linha == 0 ):
                         an = objeto[0] 
                         if(an.is_integer == False):
                             st_an = str(an)
@@ -35,7 +33,7 @@ def matrizDosCoeficientes( objeto, grauDoNumerador, grauDoDenominador, prec ):
                             A[ linha, coluna ] = mpf(an)             
                     # Coeficientes a_n para n maior ou igual a 1
                     else:
-                        an = objeto[ grauDoDenominador - grauDoDenominador + coluna + 1 + linha ]
+                        an = objeto[ grauDoNumerador - grauDoDenominador + coluna + 1 + linha ]
                         if(an.is_integer == False):
                             st_an = str(an)
                             fraq = 0
@@ -53,21 +51,21 @@ def matrizDosCoeficientes( objeto, grauDoNumerador, grauDoDenominador, prec ):
         for linha in range( 0, grauDoDenominador ):  
             for coluna in range( 0, grauDoDenominador ):                
                 # Para todo o n menor que zero n = 0
-                if ( grauDoDenominador - grauDoDenominador + coluna + 1 + linha < 0 ):
+                if ( grauDoNumerador - grauDoDenominador + coluna + 1 + linha < 0 ):
                     A[ linha, coluna ] = 0                
                 # Coeficiente a_0 da série de Taylor da função
-                elif ( grauDoDenominador - grauDoDenominador + coluna + 1 + linha == 0 ):
+                elif ( grauDoNumerador - grauDoDenominador + coluna + 1 + linha == 0 ):
                     fn = sp.diff( objeto, x, 0)
                     fnsub = fn.subs( x, 0 )
                     an = sp.N(fnsub, prec)                     
-                    A[ linha, coluna ] = sp.Float( an, prec )                    
+                    A[ linha, coluna ] = mpf( an )                    
                 # Coeficiente a_n da série de Taylor da função, para n maior ou igual a 1 
                 else:                    
-                    fn = sp.diff( objeto, x, grauDoDenominador - grauDoDenominador + coluna + 1 + linha )
+                    fn = sp.diff( objeto, x, grauDoNumerador - grauDoDenominador + coluna + 1 + linha )
                     fnsub = fn.subs( x, 0 )
-                    factorialn = factorial( grauDoDenominador - grauDoDenominador + coluna + linha + 1 )
+                    factorialn = factorial( grauDoNumerador - grauDoDenominador + coluna + linha + 1 )
                     an = mpf( sp.N(fnsub, prec) / mpf(factorialn) )                   
-                    A[ linha, coluna] = sp.Float( an, prec )                
+                    A[ linha, coluna] = an               
         return ( A )
     return
 
@@ -105,7 +103,7 @@ def matrizDosTermosIndependentes( objeto, grauDoNumerador, grauDoDenominador, pr
             nl =  factorial( grauDoNumerador + coluna + 1  )
             an = mpf( sp.N(derivadaEmZero, prec) / mpf( nl ))            
             # Coeficientes da matriz dos termos independentes
-            a[ 0, coluna ] = ( -1 ) * sp.Float( an, prec )                
+            a[ 0, coluna ] = ( -1 ) * an               
         return (a)
     return
 
@@ -149,7 +147,7 @@ def coeficientesParaCalcularCoeficentesDoNumerador(objeto, grauDoNumerador, grau
                 fn = fn.subs( x, 0 )
                 factorialn = factorial( grauDoNumerador - coluna )
                 an = mpf(sp.N(fn, prec )/mpf(factorialn))                
-                cA[ coluna ] = sp.Float( an, prec )            
+                cA[ coluna ] = an            
         return( cA )    
     return    
 ##-------- Fim dos métodos auxiliares --------##
@@ -167,10 +165,9 @@ def padeDiretoPrecisaoFinita(objeto, grauDoNumerador, grauDoDenominador, prec):
     # Se a matriz A é invertível 
     if ( A.det() != 0 ):        
       ##-- Construção do denominador --##      
-        # Cálculo da matiz inversa de A
-        A1 = A.inv( "LU" )        
         # Cálculo dos coeficientes do denominador do aproximante de Padé
-        Bn = matrizDosTermosIndependentes( objeto, grauDoNumerador, grauDoDenominador, prec ) * A.inv( "LU" )        
+        B = sp.transpose(matrizDosTermosIndependentes( objeto, grauDoNumerador, grauDoDenominador, prec )  )      
+        Bn = A.LUsolve(B)         
         # Potências de x do denominador
         Dx = sp.Matrix( np.zeros(( grauDoDenominador + 1, 1 )) ) 
         for linha in range( 0, grauDoDenominador + 1 ): Dx[linha] = x**(linha)                
