@@ -1,8 +1,6 @@
 # Importar as seguintes bibliotecas
 import sympy as sp
 import numpy as np
-# Importar o método 'inv'
-from numpy.linalg import inv
 # Definir a letra x como parametro
 x = sp.Symbol('x')
 ##-------- Início dos métodos auxiliares --------##
@@ -118,10 +116,8 @@ def padeDiretoPrecisaoInfinita( objeto, grauDoNumerador, grauDoDenominador ):
     # Se a matriz A é invertível    
     if ( A.det() != 0 ):    
      ##-- Construção do denominador --##   
-        # Cálculo da matiz inversa de A
-        A1 = A.inv("LU")       
-        # Cálculo dos coeficientes do denominador do aproximante de Padé
-        Bn = matrizDosTermosIndependentes( objeto, grauDoNumerador, grauDoDenominador ) * A.inv("LU")        
+        B = sp.transpose(matrizDosTermosIndependentes( objeto, grauDoNumerador, grauDoDenominador )  )      
+        Bn = A.LUsolve(B)          
         # Potências de x do denominador 
         Dx = sp.Matrix( np.zeros( ( grauDoDenominador + 1, 1 ) ) )
         for linha in range( 0, grauDoDenominador + 1 ):
