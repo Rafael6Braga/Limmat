@@ -69,12 +69,12 @@ def padeRecursivoPrecisaoFinita( objeto, n, iterações, percurso, prec ):
             denominador[i] = Di
     # Inputs para inicializar o algoritmo    
     # ( f_(n) , 1 )    
-    p = serieTruncada( objeto, n, prec )
-    numerador[0] = p[0]
+    f_n = serieTruncada( objeto, n, prec )
+    numerador[0] = f_n[0]
     denominador[0] = 1    
     # ( f_(n-1) , 1 )
-    q = serieTruncada( objeto, n - 1, prec )
-    numerador[1] = q[0]
+    f_n_1 = serieTruncada( objeto, n - 1, prec )
+    numerador[1] = f_n_1[0]
     denominador[1] = 1   
     # Vetor para guardar os aproximantes de Padé construídos
     pade = sp.Matrix( np.zeros( (2 + iterações) ) )    
@@ -93,20 +93,21 @@ def padeRecursivoPrecisaoFinita( objeto, n, iterações, percurso, prec ):
         cc1 = sp.Poly( numerador[i-1], x )
         c1 = cc1.coeffs()[0]        
         # Expressões recursivas de Baker para obtenção do aproximante [p-i/i]
-        numerador[i] = sp.expand( sp.simplify( ( c1 * numerador[i-2] - x * c0 * numerador[i-1] ) / c1 ) )
-        denominador[i] = sp.expand( sp.simplify( ( c1 * denominador[i-2] - x * c0 * denominador[i-1] ) / c1 ) )        
+        numerador[i] = (1/c1) * sp.expand( sp.simplify( ((  (c1) * numerador[i-2] ) - (c0) * x  * numerador[i-1] )))
+        denominador[i] = (1/c1) * sp.expand( sp.simplify( (  (c1) * denominador[i-2] - (c0)* x  * denominador[i-1] )))        
         pade[i] = numerador[i] / denominador[i]                    
         i += 1        
         if ( i < j + iterações ):            
             # Coeficiente da potência de maior grau do numerador da penúltima iteração
             cc0 = sp.Poly( numerador[i-2], x )
-            c0 = cc0.coeffs()[0]            
+            c0 = cc0.coeffs()[0]
             # Coeficiente da potência de maior grau do numerador da última iteração  
             cc1 = sp.Poly( numerador[i-1], x )
-            c1 = cc1.coeffs()[0]            
+            c1 = cc1.coeffs()[0]
+            c2 = c1 - c0
             # Expressões recursivas de Baker para obtenção do aproximante [p-i-1/i]
-            numerador[i] = sp.expand( sp.simplify( ( c1 * numerador[i-2] - c0 * numerador[i-1] ) / ( c1 - c0 ) ) )
-            denominador[i] = sp.expand( sp.simplify( ( c1 * denominador[i-2] - c0 * denominador[i-1] ) / ( c1 - c0 ) ) )            
+            numerador[i] = (1/c2)*sp.expand( sp.simplify( ( ((c1) * numerador[i-2]) - (c0) * numerador[i-1] )  ) )
+            denominador[i] = (1/c2)*sp.expand( sp.simplify( ( (c1) * denominador[i-2] - (c0) * denominador[i-1] )  ) )             
             pade[i] = numerador[i] / denominador[i]                        
         i += 1        
     # Todos os aproximantes de Padé construídos   
