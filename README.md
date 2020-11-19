@@ -2,7 +2,7 @@
 
 ### Rotinas para a construção de um ou vários aproximantes de Padé.
 
-##### Estas rotinas foram desenvolvidas para a elaboração da tese para obtenção do grau de Mestre em Engenharia Matemática na Faculdade de Ciências da Universidade do Porto. Em breve será colocado um link que remete para o documento em formato pdf.
+##### Estas rotinas foram desenvolvidas para a elaboração da tese do autor, para obtenção do grau de Mestre em Engenharia Matemática na Faculdade de Ciências da Universidade do Porto. Em breve será colocado um link que remete para o documento em formato pdf.
 
 #### A1. MDPI - Método Direto Precisão Infinita
 
