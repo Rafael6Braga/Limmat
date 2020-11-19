@@ -67,7 +67,9 @@ def padeRecursivoPrecisaoInfinita( objeto, n, iterações, percurso):
     #Padé [n/0]
     pade[0] = numerador[0] / denominador[0] 
     #Padé [(n-1)/0]
-    pade[1] = numerador[1] / denominador[1]        
+    pade[1] = numerador[1] / denominador[1]   
+    #Validar nomalidade
+    if ( str( pade[1] ) == str( pade[0] ) ): return('A tabela de Padé é não normal.')  
     # Iniciar o algoritmo de Baker
     i = 2
     j = 2
@@ -81,7 +83,9 @@ def padeRecursivoPrecisaoInfinita( objeto, n, iterações, percurso):
         # Expressões recursivas de Baker para obtenção do aproximante [p-i/i]
         numerador[i] = (1/c1) * sp.expand( sp.simplify( ((  (c1) * numerador[i-2] ) - (c0) * x  * numerador[i-1] )))
         denominador[i] = (1/c1) * sp.expand( sp.simplify( (  (c1) * denominador[i-2] - (c0)* x  * denominador[i-1] )))        
-        pade[i] = numerador[i] / denominador[i]                    
+        pade[i] = numerador[i] / denominador[i]    
+        # Validar nomalidade
+        if (str(pade[i]) == str(pade[i-1])): return('A tabela de Padé é não normal.')  
         i += 1        
         if ( i < j + iterações ):            
             # Coeficiente da potência de maior grau do numerador da penúltima iteração
@@ -94,7 +98,9 @@ def padeRecursivoPrecisaoInfinita( objeto, n, iterações, percurso):
             # Expressões recursivas de Baker para obtenção do aproximante [p-i-1/i]
             numerador[i] = (1/c2)*sp.expand( sp.simplify( ( ((c1) * numerador[i-2]) - (c0) * numerador[i-1] )  ) )
             denominador[i] = (1/c2)*sp.expand( sp.simplify( ( (c1) * denominador[i-2] - (c0) * denominador[i-1] )  ) )             
-            pade[i] = numerador[i] / denominador[i]                        
+            pade[i] = numerador[i] / denominador[i] 
+            # Validar nomalidade
+            if ( str( pade[i] ) == str( pade[i-1] ) ): return( 'A tabela de Padé é não normal.' )  
         i += 1        
     # Todos os aproximantes de Padé construídos   
     if ( percurso == 1 ): return ( pade )    
