@@ -152,10 +152,11 @@ def padeDiretoPrecisaoInfinita( objeto, grauDoNumerador, grauDoDenominador ):
             Numerador = cn * Nx           
             # Função racional
             R = sp.Function( 'R' )
-            R = Numerador / Denominador           
+            R = Numerador[0] / Denominador[0]           
             # Aproximante de Padé
-            Pade = sp.Function( 'Pade')
-            Pade = R[0]           
+            Pade = sp.Function( 'Pade' )
+            Pade = R            
+            return ( Pade )           
         # Se o grau do mumerador é maior do que o grau do denominador
         else:           
             # Calculo dos coeficientes c_n até n = grau do denominador
@@ -178,10 +179,10 @@ def padeDiretoPrecisaoInfinita( objeto, grauDoNumerador, grauDoDenominador ):
             Numerador = cn * Nx            
             # Função racional
             R = sp.Function( 'R' )
-            R = Numerador/Denominador            
+            R = Numerador[0] / Denominador[0]           
             # Aproximante de Padé
-            Pade = sp.Function( 'Pade')
-            Pade = R[0]            
+            Pade = sp.Function( 'Pade' )
+            Pade = R                     
         return ( Pade )    
     # Se a matriz não é invertível
     else: return( 'A matrix não é invertível.' )   
