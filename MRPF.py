@@ -61,12 +61,6 @@ def padeRecursivoPrecisaoFinita( objeto, n, iterações, percurso, prec ):
    # Vetores para os numeradores e denominadores dos aproximantes de Padé 
     numerador = sp.Matrix( np.zeros( (2 + iterações) ) )
     denominador = sp.Matrix(np.zeros( (2 + iterações) ) )    
-    # Definir o nome dos numerados e denominadores como funções 
-    for i in range( 0, 2 + iterações ):
-            Ni = sp.Function('N'+str(i))
-            numerador[i] = Ni
-            Di = sp.Function('D'+str(i)) 
-            denominador[i] = Di
     # Inputs para inicializar o algoritmo    
     # ( f_(n) , 1 )    
     f_n = serieTruncada( objeto, n, prec )
