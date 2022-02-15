@@ -29,16 +29,14 @@
 
 
 #### A2. MDPIE - Método Direto Precisão Infinita Exponencial
-##### Para a construção de um aproximante de Padé, usando o método direto com precisão aritmética finita, basta executar todos os métodos definidos em MDPIE.py, e por último executar o comando:
+##### Para a construção de um aproximante de Padé da função exp(x), usando o método direto proposto por Padé, basta executar todos os métodos definidos em MDPIE.py, e por último executar o comando:
 
-                       padeDiretoPrecisaoFinita(objeto, grauDoNumerador, grauDoDenominador, prec)
+                       padeExponencial(grauDoNumerador, grauDoDenominador)
 		       
 ##### onde:
 
-    objeto = uma função ou uma lista de coeficientes (ver comentários em A.1),
-    grauDoNumerador = grau do numerador do aproximante de Padé [p/q](x),
-    grauDoDenominador = grau do denominador do aproximante de Padé [p/q](x),
-    prec = número de algarismos significativos.
+    grauDoNumerador = grau do numerador do aproximante de Padé [p/q](x) de exp(x),
+    grauDoDenominador = grau do denominador do aproximante de Padé [p/q](x) de exp(x).
     
 
 #### A3. MRPI - Método Recursivo Precisão Infinita
