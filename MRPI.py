@@ -8,7 +8,7 @@ def serieTruncada( objeto, n ):
     # Vetor dos coeficientes
     an = sp.Matrix( np.zeros( (n + 1) ) )    
     # Vetor do parâmetro x
-    fx = sp.Matrix(np.zeros( (1, n + 1) ) )    
+    fx = sp.Matrix(np.zeros( (1, n + 1) ) )     
     # Se o objeto é uma lista
     if ( type( objeto ) == list or type( objeto ) == tuple ):        
         # Se a lista contém os primeiros n + 1 coeficientes da série
